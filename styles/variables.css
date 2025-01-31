@@ -5,7 +5,7 @@
 :root {
   --main-font: 'IBM Plex mono', sans-serif;
   --page-padding: 10px;
-  --margin-page: 40px 0;
+  --body-gap: 40px;
   --main-gap: 50px;
   --text-color: #F1B2CE;
   --title-text-color: #DB00FF;
