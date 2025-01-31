@@ -4,8 +4,9 @@
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: 1fr min-content 1fr;
-  font-family: 'IBM Plex mono', sans-serif;
+  font-family: var(--main-font, sans-serif);
   font-size: 18px;
+  line-height: 23.4px;
   background-image: var(--bg-image, url(../images/cover-image-dark.png));
   background-color: var(--bg-color, #000028);
   background-size: cover;
@@ -25,47 +26,45 @@ h4 {
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: 1fr min-content 1fr;
-  block-size: 100vh;
+  block-size: max(668px, 100dvb);
   padding: var(--page-padding, 10px);
-}
-
-.decorated-zone {
-  /* position: relative; */
 }
 
 .decorated-zone:before {
   content: "";
-  position: absolute;
+  grid-column: 1 / 2;
   grid-row: 1 / 2;
   inline-size: 25px;
   block-size: 25px;
   justify-self: end;
-  /* inset-inline-end: 1em; */
   border-inline-end: 1px solid var(--accent-color, #FF0070);
   border-block-start: 1px solid var(--accent-color, #FF0070);
 }
 
 .decorated-zone::after {
   content: "";
-  /* position: absolute; */
+  grid-column: 1 / 2;
+  grid-row: 3 / 4;
   inline-size: 25px;
   block-size: 25px;
+  justify-self: start;
   align-self: end;
   border-inline-start: 1px solid var(--accent-color, #FF0070);
   border-block-end: 1px solid var(--accent-color, #FF0070);
 }
 
 .header__decor-corner {
-  display: inline-block;
   position: absolute;
+  grid-column: 1 / 2;
   grid-row: 1 / 2;
   justify-self: end;
-  inset-inline-end: 1.5em;
+  inset-inline-end: 0.5em;
 }
 
 .header__decor-corner:before {
   content: "REC";
   padding-inline-end: 1em;
+  line-height: 25px;
   color: var(--accent-color, #FF0070);
 }
 
@@ -80,6 +79,8 @@ h4 {
 }
 
 .header__theme-menu {
+  grid-column: 1 / 2;
+  grid-row: 1 / 2;
   justify-self: end;
   align-self: center;
 }
@@ -90,22 +91,28 @@ h4 {
   gap: 10;
 }
 
+.header__theme-menu-item:not(:last-child) {
+  margin-block-end: 10px;
+}
+
 .header__theme-menu-button {
+  appearance: none;
   padding-block: 1.5px;
   padding-inline: 13px;
-  appearance: none;
   font-family: var(--main-font, sans-serif);
+  line-height: 18px;
   color: var(--accent-color, #FF0070);
   background-color: transparent;
   border: none;
 }
 
 .title-sizing {
+  grid-column: 1 / 2;
+  grid-row: 2 / 3;
   /* font-size: clamp(7.25rem, 7.0115rem + 1.0178vw, 7.5rem); */
   font-size: clamp(7.25rem, 6.3477rem + 3.8498vw, 9.8125rem);
   font-weight: 700;
-  line-height: 0.957;
-  /* line-height: 95.7px; */
+  line-height: 95.7px;
   color: var(--title-text-color, #DB00FF);
 }
 
@@ -114,6 +121,8 @@ h4 {
 }
 
 .header__heading {
+  grid-column: 1 / 2;
+  grid-row: 3 / 4;
   align-self: center;
   block-size: fit-content;
 }
@@ -126,7 +135,7 @@ h4 {
 main {
   display: grid;
   gap: var(--main-gap, 50px);
-  margin: var(--main-margin, 40px 0);
+  margin: var(--margin-page, 40px);
   padding: 0 var(--page-padding, 10px);
 }
 
@@ -135,8 +144,16 @@ main {
   margin-block-end: 20px;
 }
 
+.card__content-margin-bl-st {
+  margin-block-start: 1.1em;
+}
+
 .card__content-subtitle {
   margin-block-end: 10px;
+}
+
+.card:nth-of-type(3) .card__content-subtitle {
+  font-weight: 400;
 }
 
 .card__content-subtitle_bold {
@@ -149,7 +166,7 @@ main {
 
 .card-pictures__gallery {
   display: grid;
-  grid-template-columns: 1fr;
+  grid-template-columns: 1fr; 
   gap: 10px;
 }
 
@@ -175,7 +192,7 @@ main {
 
   :root {
     --page-padding: 20px;
-    --main-margin: 60px 0;
+    --margin-page: 60px 0;
     --main-gap: 80px;
   }
 
@@ -190,6 +207,15 @@ main {
     gap: 20px;
   }
 
+    .card:nth-of-type(2) {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+    .card:nth-of-type(2) .card__title {
+    columns: 1 / 2;
+  }
+
   .card:nth-of-type(3) {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -202,6 +228,18 @@ main {
 
   .card__content {
     grid-column: 2 / -1;
+  }
+
+  .card:nth-of-type(2) .card__content {
+    grid-column: 1 / -1;
+  }
+
+  .card:nth-of-type(2) .card__title {
+    margin-block-end: 0px;
+  }
+
+  .card-pictures .card__content-subtitle {
+    margin-block-end: 20px;
   }
 
   .card-pictures__gallery {
@@ -243,6 +281,10 @@ main {
   .header__theme-menu-list {
     display: flex;
     flex-direction: row;
+  }
+
+  .header__theme-menu-item:not(:last-child) {
+    margin-block-end: 0;
   }
 
   .card:nth-of-type(2) .card__content {
