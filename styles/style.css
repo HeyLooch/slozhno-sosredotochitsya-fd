@@ -3,11 +3,12 @@
 .page {
   display: grid;
   grid-template-columns: 1fr;
-  grid-template-rows: 1fr min-content 1fr;
+  grid-template-rows: 100dvb min-content 100dvb;
   gap: var(--body-gap, 40px);
   font-family: var(--main-font, sans-serif);
   font-size: 18px;
   line-height: 23.4px;
+  color: var(--text-color, #f1b2ce);
   background-image: var(--bg-image, url(../images/cover-image-dark.png));
   background-color: var(--bg-color, #000028);
   background-size: cover;
@@ -23,12 +24,14 @@ h4 {
 }
 
 .header {
-  position: relative;
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: 1fr min-content 1fr;
-  block-size: max(668px, 100dvb);
   padding: var(--page-padding, 10px);
+}
+
+.decorated-zone {
+  position: relative;
 }
 
 .decorated-zone:before {
@@ -38,8 +41,8 @@ h4 {
   inline-size: 25px;
   block-size: 25px;
   justify-self: end;
-  border-inline-end: 1px solid var(--accent-color, #FF0070);
-  border-block-start: 1px solid var(--accent-color, #FF0070);
+  border-inline-end: 1px solid var(--decorated-zone-color, #ff0070);
+  border-block-start: 1px solid var(--decorated-zone-color, #ff0070);
 }
 
 .decorated-zone::after {
@@ -50,8 +53,8 @@ h4 {
   block-size: 25px;
   justify-self: start;
   align-self: end;
-  border-inline-start: 1px solid var(--accent-color, #FF0070);
-  border-block-end: 1px solid var(--accent-color, #FF0070);
+  border-inline-start: 1px solid var(--decorated-zone-color, #ff0070);
+  border-block-end: 1px solid var(--decorated-zone-color, #ff0070);
 }
 
 .header__decor-corner {
@@ -64,9 +67,9 @@ h4 {
 
 .header__decor-corner:before {
   content: "REC";
-  padding-inline-end: 1em;
+  padding-inline-end: 0.57em;
   line-height: 25px;
-  color: var(--accent-color, #FF0070);
+  color: var(--accent-color, #ff0070);
 }
 
 .header__decor-corner:after {
@@ -74,9 +77,9 @@ h4 {
   display: inline-block;
   inline-size: 9px;
   block-size: 9px;
-  background-color: var(--accent-color, #FF0070);
+  background-color: var(--accent-color, #ff0070);
   border-radius: 100%;
-  box-shadow: 0 0 5px 3px #FF0070;
+  box-shadow: 0 0 5px 3px #ff0070;
 }
 
 .header__theme-menu {
@@ -98,23 +101,44 @@ h4 {
   padding-inline: 13px;
   font-family: var(--main-font, sans-serif);
   line-height: 18px;
-  color: var(--accent-color, #FF0070);
+  color: var(--menu-color, #ff0070);
   background-color: transparent;
   border: none;
+}
+
+.header__theme-menu-button:focus-visible {
+  outline: none;
+  border-block-end: 1px solid var(--menu-color, #ff0070);
+}
+
+.header__theme-menu-button:hover {
+  outline: 1px solid var(--menu-hover-color, rgb(255, 0, 112, 0.4));
+}
+
+.header__theme-menu-button_active {
+  pointer-events: none;
+  outline: 1px solid var(--menu-color, #ff0070);
 }
 
 .title-sizing {
   grid-column: 1 / 2;
   grid-row: 2 / 3;
-  /* font-size: clamp(7.25rem, 7.0115rem + 1.0178vw, 7.5rem); */
-  font-size: clamp(7.25rem, 6.3477rem + 3.8498vw, 9.8125rem);
+  font-size: clamp(7.25rem, 7.0115rem + 1.0178vw, 7.5rem);
   font-weight: 700;
   line-height: 95.7px;
-  color: var(--title-text-color, #DB00FF);
+  color: var(--bigest-title-color, #db00ff);
 }
 
 .text-shadow {
-  text-shadow: 4px 4px 0 var(--accent-color, #FF0070);
+  text-shadow: 4px 4px 0 var(--accent-color, #ff0070);
+}
+
+a.text-shadow:focus-visible {
+  outline: 1px solid var(--text-color, #f1b2ce);
+}
+
+a.text-shadow:hover {
+  border-block-end: 1px solid var(--text-color, #f1b2ce);
 }
 
 .header__heading {
@@ -125,36 +149,32 @@ h4 {
 }
 
 .title-decor {
-  color: var(--bg-color, #000028);
-  background-color: var(--accent-color, #FF0070);
+  font-weight: 700;
+  color: var(--subtitle-color, #000028);
+  background-color: var(--accent-color, #ff0070);
 }
 
 main {
   display: grid;
   gap: var(--main-gap, 50px);
-  /* margin: var(--body-gap, 40px); */
   padding: 0 var(--page-padding, 10px);
 }
 
 .card__title {
-  color: var(--accent-color, #FF0070);
+  color: var(--title-color, #ff0070);
   margin-block-end: 20px;
 }
 
 .card__content-margin-bl-st {
-  margin-block-start: 1.1em;
+  margin-block-start: 20px;
 }
 
 .card__content-subtitle {
   margin-block-end: 10px;
 }
 
-.card:nth-of-type(3) .card__content-subtitle {
+.card:nth-of-type(3) .title-decor:not(:first-of-type) {
   font-weight: 400;
-}
-
-.card__content-subtitle_bold {
-  font-weight: 700; 
 }
 
 .card__content-paragraph:not(:last-child) {
@@ -163,7 +183,7 @@ main {
 
 .card-pictures__gallery {
   display: grid;
-  grid-template-columns: 1fr; 
+  grid-template-columns: 1fr;
   gap: 10px;
 }
 
@@ -186,11 +206,20 @@ main {
 }
 
 @media (width >= 768px) {
-
   :root {
     --page-padding: 20px;
     --body-gap: 60px 0;
     --main-gap: 80px;
+  }
+
+  .title-sizing {
+    font-size: clamp(7.5rem, 0.5625rem + 14.4531vw, 9.8125rem);
+    line-height: 99px;
+  }
+
+  .header .title-sizing {
+    position: relative;
+    inset-inline-start: -20px;
   }
 
   .header__heading {
@@ -204,23 +233,23 @@ main {
     gap: 20px;
   }
 
-    .card:nth-of-type(2) {
+  .card:nth-of-type(2) {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
   }
 
-    .card:nth-of-type(2) .card__title {
+  .card:nth-of-type(2) .card__title {
     columns: 1 / 2;
   }
 
   .card:nth-of-type(3) {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: 1fr 2fr;
     gap: 20px;
   }
 
   .card__title {
-    grid-column: 1 / auto;
+    grid-column: 1 / 2;
   }
 
   .card__content {
@@ -248,27 +277,25 @@ main {
   .gallery__item:nth-child(1) {
     grid-column: span 2;
   }
-  
+
   .gallery__item:nth-child(2) {
     grid-row: span 2;
-  } 
-  
+  }
+
   .gallery__item:nth-child(3) {
     grid-row: span 2;
   }
 
   .gallery__item:nth-child(4) {
     grid-column: span 1;
-  } 
-
-  .gallery__item:nth-child(5) {
-    grid-column: span 2; 
   }
 
+  .gallery__item:nth-child(5) {
+    grid-column: span 2;
+  }
 }
 
 @media (width >= 1024px) {
-
   .header__theme-menu {
     grid-row: 1 / 2;
     justify-self: center;
@@ -280,14 +307,15 @@ main {
     gap: 10px;
   }
 
+  .title-sizing {
+    font-size: clamp(7.5rem, 0.5625rem + 14.4531vw, 9.8125rem);
+    line-height: 99px;
+    line-height: 129.53px;
+  }
+
   .card:nth-of-type(2) .card__content {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 20px;
   }
-
 }
-
- * {
-  outline: 1px solid red;
-} 

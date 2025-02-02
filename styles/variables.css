@@ -8,8 +8,13 @@
   --body-gap: 40px;
   --main-gap: 50px;
   --text-color: #F1B2CE;
-  --title-text-color: #DB00FF;
   --accent-color: #FF0070;
+  --bigest-title-color: #DB00FF;
+  --title-color: #FF0070;
+  --subtitle-color: #000028;
+  --menu-color: rgb(255, 0, 112);
+  --menu-hover-color: rgb(255, 0, 112, 0.4);
+  --decorated-zone-color: #FF0070;
   --bg-color: #000028;
   --bg-image: url(../images/cover-image-dark.png);
 }
