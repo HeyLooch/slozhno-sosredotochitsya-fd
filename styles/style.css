@@ -79,7 +79,7 @@ h4 {
   block-size: 9px;
   background-color: var(--accent-color, #ff0070);
   border-radius: 100%;
-  box-shadow: 0 0 5px 3px #ff0070;
+  box-shadow: 0 0 4px 2px #ff0070;
 }
 
 .header__theme-menu {
@@ -200,6 +200,7 @@ main {
   display: grid;
   grid-template-columns: 1fr;
   padding: var(--page-padding, 10px);
+  block-size: max(668px, 100dvb);
 }
 
 .footer__title {
