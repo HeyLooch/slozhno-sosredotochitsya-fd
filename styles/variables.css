@@ -5,7 +5,7 @@
 :root {
   --main-font: 'IBM Plex mono', sans-serif;
   --page-padding: 10px;
-  --body-gap: 40px;
+  --main-margin-block: 40px;
   --main-gap: 50px;
   --text-color: #F1B2CE;
   --accent-color: #FF0070;

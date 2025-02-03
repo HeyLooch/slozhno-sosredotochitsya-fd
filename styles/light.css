@@ -29,6 +29,7 @@
 }
 
 @media (prefers-color-scheme: light) {
+
   :root {
     --text-color: #353430;
   --accent-color: #FF8DCB;
@@ -39,7 +40,7 @@
   --menu-hover-color: rgb(53, 52, 48, 0.4);
   --decorated-zone-color: #353430;
   --bg-color: #FFF1F7;
-  --bg-image: url(../images/cover-image-light.png);   
+  --bg-image: url(../images/cover-image-light.png);
   }
 
   .header__decor-corner {
