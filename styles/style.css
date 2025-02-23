@@ -148,6 +148,10 @@ a.text-shadow:hover {
   block-size: fit-content;
 }
 
+.header__heading span {
+  display: block;
+}
+
 .title-decor {
   font-weight: 700;
   color: var(--subtitle-color, #000028);
