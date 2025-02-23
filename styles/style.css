@@ -196,7 +196,7 @@ main {
 .gallery__item {
   inline-size: 100%;
   block-size: 100%;
-  object-fit: cover;
+  object-fit: contain;
   object-position: center;
 }
 
@@ -264,7 +264,7 @@ main {
   }
 
   .gallery__item {
-    object-fit: contain;
+    object-fit: cover;
   }
 
   .gallery__item:nth-child(1) {
