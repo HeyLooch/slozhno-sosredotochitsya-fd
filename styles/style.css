@@ -212,7 +212,7 @@ main {
   align-self: center;
 }
 
-@media (width >= 768px) {
+@media (width >= 375px) {
   :root {
     --page-padding: 20px;
     --main-margin-block: 60px;
