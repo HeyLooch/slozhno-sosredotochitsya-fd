@@ -263,6 +263,10 @@ main {
     gap: 20px;
   }
 
+  .gallery__item {
+    object-fit: contain;
+  }
+
   .gallery__item:nth-child(1) {
     grid-column: span 3;
   }
